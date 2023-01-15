@@ -47,15 +47,43 @@ ul
     display: block;
     padding: 0 30px;
     opacity: 1;
+    position: fixed;
+    left: 270px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    transition: all 0.3s ease;
+}
+.section.back-section
+{
+    z-index: 1;
+}
+.section.active
+{
+    z-index: 2;
+    opacity: 1;
+    animation: slideSection 1s ease;
+}
+@keyframes slideSection
+{
+    0%
+    {
+        transform: translateX(100%);
+    }
+    100%
+    {
+        transform: translateX(0%);
+    }
+
 }
 .hidden
 {
     display: none !important;
 }
-.main-contant
-{
-   padding-left: 270px;
-}
+
 .padd-15
 {
     padding-left: 15px;
@@ -152,6 +180,7 @@ ul
     justify-content: center;
     align-items: center ;
     z-index: 10;
+    transition: all 0.3s ease;
 }
 
 .aside .logo
@@ -214,6 +243,7 @@ ul
     display: none;
     align-items: center;
     justify-content: center;
+    transition: all 0.3s ease;
 }
 .aside .nav-toggler span
 {
@@ -223,7 +253,10 @@ ul
     display: inline-block;
     position: relative;
 }
-
+.aside .nav-toggler.open span
+{
+    background-color: transparent;
+}
 .aside .nav-toggler span::before
 {
     content: '';
@@ -233,6 +266,11 @@ ul
     position: absolute;
     top: -6px;
     left: 0;
+}
+.aside .nav-toggler.open span::before
+{
+    transform: rotate(45deg);
+    top: 0;
 }
 .aside .nav-toggler span::after
 {
@@ -244,7 +282,11 @@ ul
     top: 6px;
     left: 0;
 }
-
+.aside .nav-toggler.open span::after
+{
+    transform: rotate(-45deg);
+    top: 0;
+}
 
 .aside .nav
 {
@@ -412,8 +454,8 @@ h3 .my-profession
 {
     margin-top: 30px;
 }
-.about .about-content .personal-info .buttons .btn{
-    margin-right: 15px;
+.about .about-content .personal-info .buttons .btn
+{
     margin-top: 10px;
 }
 .about .about-content .skills
@@ -754,13 +796,34 @@ h3 .my-profession
 
 @media (max-width : 1134px)
 {
+    .section .container
+    {
+        padding-top: 70px;
+    }
     .aside
     {
         left: -270px;
     }
-    .main-contant
+    .aside.open
     {
-        padding-left: 0;
+        left: 0;
+    }
+    .aside .nav-toggler
+    {
+        display: flex;
+        left: 30px;
+    }
+    .aside .nav-toggler.open
+    {
+        left: 300px;
+    }
+    .section
+    {
+        left: 0;
+    }
+    .section.open
+    {
+        left: 270px;
     }
     .about .about-content .personal-info .info-item p span
     {
